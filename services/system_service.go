@@ -65,7 +65,7 @@ func (s *SystemService) GetMetricsInfo() (map[string][]MetricPoint, error) {
 	now := time.Now()
 	yesterday := getPreviousDay(now)
 
-	var period string = "month" 
+	var period string = "month"
 
 	periodKey := getCustomPeriodKey(now)
 
@@ -149,15 +149,8 @@ func (s *SystemService) GetStorageUsage() (*models.StorageInfo, error) {
 		return nil, err
 	}
 
-	totalGB := float64(diskInfo.Total) / 1024 / 1024 / 1024
 	usedGB := float64(diskInfo.Used) / 1024 / 1024 / 1024
-	freeGB := float64(diskInfo.Free) / 1024 / 1024 / 1024
-
 	return &models.StorageInfo{
-		TotalGB:          totalGB,
-		UsedGB:           usedGB,
-		FreeGB:           freeGB,
-		UsedPercent:      diskInfo.UsedPercent,
-		TotalUsedStorage: usedGB,
+		UsedGB: usedGB,
 	}, nil
 }
