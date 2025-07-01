@@ -114,18 +114,17 @@ func (s *SystemService) GetMetricsInfo() (map[string][]MetricPoint, error) {
 	bandwidthData := make([]MetricPoint, count)
 
 	for i := 0; i < count; i++ {
-		factor := 0.95 + rand.Float64()*0.1
 		cpuData[i] = MetricPoint{
 			Label: labels[i],
-			Value: cpuPercent[0] * factor,
+			Value: cpuPercent[0],
 		}
 		ramData[i] = MetricPoint{
 			Label: labels[i],
-			Value: (float64(memInfo.Used) / 1024 / 1024) * factor,
+			Value: (float64(memInfo.Used) / 1024 / 1024),
 		}
 		bandwidthData[i] = MetricPoint{
 			Label: labels[i],
-			Value: totalBandwidth * factor,
+			Value: totalBandwidth,
 		}
 	}
 
