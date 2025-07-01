@@ -64,6 +64,7 @@ func (s *SystemService) GetMetricsInfo() (map[string][]MetricPoint, error) {
 
 	now := time.Now()
 	yesterday := getPreviousDay(now)
+	fmt.Println("Yesterday:", yesterday)
 
 	var period string = "month"
 
